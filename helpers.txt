@@ -1,0 +1,67 @@
+const mockNavigate = jest.fn();
+
+jest.mock('react-router', () => ({
+  ...jest.requireActual('react-router'),
+  useNavigate: () => mockNavigate
+}));
+
+-------------------------------------------------------
+
+import * as useAuth from '..';
+
+const useAuthSpy = jest.spyOn(useAuth, 'useAuth');
+
+returnValue = Vai retornar sempre
+returnValueOnce = Vai retornar só uma vez
+
+useAuthSpy.mockReturnValue({});
+
+-------------------------------------------------------
+
+beforeEach(() => {
+  global.window = Object.create(window);
+  Object.defineProperty(window, 'location', {
+    value: { pathname: '/example/test' }
+  });
+});
+
+it.each([ ['element', 'value'], ['element2', 'value2'] ])('should be able to...', (element, value) => {...});
+
+fetcherSpy.mockReturnValue(new Promise((resolve, reject) => {
+  resolve({
+    data: { ... },
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {}
+  });
+}));
+
+fetcherSpy.mockResolveValue({
+  data: { ... },
+  status: 200,
+  statusText: 'OK',
+  headers: {},
+  config: {}
+});
+
+fetcherSpy.mockReturnValue(new Promise((resolve, reject) => {
+  reject({
+    status: 500,
+    statusText: 'Internal Server Error',
+    headers: {},
+    config: {}
+  });
+}));
+
+-------------------------------------------------------
+
+https://www.youtube.com/watch?v=p1bjHvX-DqM Como testar aplicações React usando Jest & Testing Library
+https://kentcdodds.com/blog/how-to-test-custom-react-hooks
+https://github.com/jjunior96/next-template/blob/main/next.config.js
+https://stackoverflow.com/questions/60270013/how-to-mock-react-custom-hook-returned-value
+https://meticulous.ai/blog/how-to-use-jest-spyon/
+https://stackoverflow.com/questions/45758366/how-to-change-jest-mock-function-return-value-in-each-test
+
+https://www.youtube.com/watch?v=0dRPPmRYM3o
+https://example.cypress.io/
